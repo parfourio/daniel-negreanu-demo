@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<!--
+
+  Hey Daniel —
+
+  I'm a huge fan. I built this site for you, no strings attached.
+  Please let me know how I can help you.
+
+  — Scott Schultz
+    scott.schultz.solutions@gmail.com
+    parfour.io
+
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daniel Negreanu — Official Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black:      #0a0a0a;
+      --black-mid:  #111111;
+      --black-card: #161616;
+      --black-light:#1e1e1e;
+      --gold:       #c9a84c;
+      --gold-light: #e2c47a;
+      --gold-dim:   rgba(201,168,76,0.12);
+      --red:        #b91c1c;
+      --white:      #ffffff;
+      --white-60:   rgba(255,255,255,0.6);
+      --white-30:   rgba(255,255,255,0.3);
+      --white-10:   rgba(255,255,255,0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+
+    /* ── OUTREACH BANNER ── */
+    .outreach-banner {
+      background: var(--gold);
+      color: var(--black);
+      padding: 11px 24px;
+      text-align: center;
+      font-size: 0.83rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    .outreach-banner strong { font-weight: 800; }
+    .outreach-banner a.reply-btn {
+      display: inline-block;
+      margin-left: 12px;
+      background: var(--black);
+      color: var(--gold);
+      padding: 4px 16px;
+      border-radius: 2px;
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      transition: opacity 0.2s;
+    }
+    .outreach-banner a.reply-btn:hover { opacity: 0.8; }
+
+    /* ── NAV ── */
+    nav {
+      background: rgba(10,10,10,0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      gap: 1px;
+    }
+    .nav-logo-main {
+      font-size: 1.15rem;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      font-weight: 300;
+    }
+    .nav-logo-main strong {
+      font-weight: 900;
+      color: var(--white);
+    }
+    .nav-logo-sub {
+      font-size: 0.48rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 2px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--white-60);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links .nav-cta {
+      background: var(--gold);
+      color: var(--black) !important;
+      padding: 9px 20px;
+      border-radius: 2px;
+      font-weight: 700;
+    }
+    .nav-links .nav-cta:hover { background: var(--gold-light); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0; right: 0;
+      background: var(--black-mid);
+      z-index: 998;
+      border-top: 2px solid var(--gold);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      padding: 12px 0 20px;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: 13px 32px;
+      color: var(--white-60);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--white-10);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a.mobile-cta {
+      margin: 16px 24px 0;
+      border: none;
+      background: var(--gold);
+      color: var(--black) !important;
+      text-align: center;
+      border-radius: 2px;
+      font-weight: 700;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: url('https://danielnegreanu.com/wp-content/uploads/2024/06/daniel-negreanu-wins-bracelet-header.jpg') center top / cover no-repeat;
+      min-height: 94vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.70) 45%, rgba(10,10,10,0.25) 75%, rgba(10,10,10,0.05) 100%),
+        linear-gradient(to top, rgba(10,10,10,0.7) 0%, transparent 40%);
+    }
+    .hero-inner {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 48px;
+      width: 100%;
+    }
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 8rem;
+      line-height: 0.9;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .hero h1 .gold { color: var(--gold); }
+    .hero-nickname {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      letter-spacing: 0.2em;
+      color: var(--white-30);
+      margin-bottom: 28px;
+    }
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--white-60);
+      line-height: 1.75;
+      max-width: 500px;
+      margin-bottom: 40px;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+      padding: 14px 32px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      padding: 14px 32px;
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 2px;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      background: var(--black-mid);
+      border-top: 1px solid var(--white-10);
+      border-bottom: 1px solid var(--white-10);
+      padding: 0 48px;
+    }
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-item {
+      padding: 36px 24px;
+      text-align: center;
+      border-right: 1px solid var(--white-10);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.2rem;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--white-30);
+    }
+
+    /* ── SECTION COMMON ── */
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 96px 48px;
+    }
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.4;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+    .section-sub {
+      font-size: 0.95rem;
+      color: var(--white-60);
+      line-height: 1.8;
+      max-width: 620px;
+      margin-bottom: 48px;
+    }
+
+    /* ── BIOGRAPHY ── */
+    #biography { background: var(--black-mid); }
+    .bio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .bio-text p {
+      font-size: 0.95rem;
+      color: var(--white-60);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .bio-text p strong { color: var(--white); }
+    .bio-facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 36px;
+    }
+    .bio-fact {
+      background: var(--white-10);
+      border: 1px solid rgba(201,168,76,0.15);
+      padding: 20px;
+      border-radius: 4px;
+    }
+    .bio-fact-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .bio-fact-value {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .bio-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .gg-card {
+      background: var(--black-card);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .gg-card-header {
+      background: var(--gold);
+      padding: 14px 24px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      color: var(--black);
+    }
+    .gg-card-body {
+      padding: 24px;
+    }
+    .gg-card-body p {
+      font-size: 0.85rem;
+      color: var(--white-60);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .gg-card-body a {
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .gg-card-body a:hover { color: var(--gold-light); }
+    .accolade-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .accolade-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--white-10);
+      border-radius: 4px;
+      font-size: 0.82rem;
+      color: var(--white-60);
+    }
+    .accolade-item::before {
+      content: '♦';
+      color: var(--gold);
+      font-size: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    /* ── TROPHY ROOM ── */
+    #trophy { background: var(--black); }
+    .trophy-intro {
+      font-size: 0.95rem;
+      color: var(--white-60);
+      line-height: 1.8;
+      max-width: 720px;
+      margin-bottom: 56px;
+    }
+    .trophy-totals {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+    }
+    .trophy-total {
+      background: var(--gold-dim);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 4px;
+      padding: 18px 28px;
+      text-align: center;
+      min-width: 140px;
+    }
+    .trophy-total-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .trophy-total-label {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white-30);
+    }
+
+    /* Accordion */
+    .year-block {
+      border-bottom: 1px solid var(--white-10);
+    }
+    .year-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      cursor: pointer;
+      user-select: none;
+    }
+    .year-header:hover .year-label { color: var(--gold); }
+    .year-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      transition: color 0.2s;
+    }
+    .year-meta {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white-30);
+    }
+    .year-chevron {
+      color: var(--gold);
+      font-size: 1rem;
+      transition: transform 0.25s;
+    }
+    .year-block.open .year-chevron { transform: rotate(180deg); }
+    .year-wins {
+      display: none;
+      padding-bottom: 24px;
+    }
+    .year-block.open .year-wins { display: block; }
+    .win-row {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      padding: 10px 0;
+      border-top: 1px solid var(--white-10);
+      font-size: 0.83rem;
+    }
+    .win-place {
+      font-weight: 700;
+      min-width: 28px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .win-place.first { color: #FFD700; }
+    .win-place.second { color: #C0C0C0; }
+    .win-place.third { color: #CD7F32; }
+    .win-event { color: var(--white-60); flex: 1; line-height: 1.5; }
+    .win-amount {
+      font-weight: 600;
+      color: var(--white);
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    /* Notable accomplishments */
+    .notable-section {
+      margin-top: 56px;
+      padding-top: 48px;
+      border-top: 1px solid var(--white-10);
+    }
+    .notable-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .notable-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .notable-item {
+      background: var(--white-10);
+      border-left: 2px solid var(--gold);
+      padding: 14px 18px;
+      font-size: 0.82rem;
+      color: var(--white-60);
+      line-height: 1.5;
+      border-radius: 0 4px 4px 0;
+    }
+
+    /* ── VIDEO BLOG ── */
+    #videos { background: var(--black-mid); }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .video-card {
+      background: var(--black-card);
+      border: 1px solid var(--white-10);
+      border-radius: 6px;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+      transition: all 0.25s;
+    }
+    .video-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(201,168,76,0.12);
+    }
+    .video-thumb {
+      height: 180px;
+      background: var(--black-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .video-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+    }
+    .play-btn {
+      position: absolute;
+      width: 52px;
+      height: 52px;
+      background: rgba(201,168,76,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--black);
+    }
+    .video-info { padding: 18px; }
+    .video-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .video-meta {
+      font-size: 0.72rem;
+      color: var(--white-30);
+      letter-spacing: 0.06em;
+    }
+    .video-cta {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    /* ── POKER BLOG ── */
+    #blog { background: var(--black); }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .blog-card {
+      background: var(--black-card);
+      border: 1px solid var(--white-10);
+      border-radius: 6px;
+      padding: 28px;
+      text-decoration: none;
+      display: block;
+      transition: all 0.25s;
+    }
+    .blog-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+    .blog-date {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .blog-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.45;
+      margin-bottom: 12px;
+    }
+    .blog-excerpt {
+      font-size: 0.8rem;
+      color: var(--white-60);
+      line-height: 1.7;
+    }
+    .blog-read {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--gold);
+      padding: 80px 48px;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      letter-spacing: 0.06em;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+    .cta-section p {
+      font-size: 1rem;
+      color: rgba(10,10,10,0.65);
+      margin-bottom: 36px;
+    }
+    .btn-dark {
+      background: var(--black);
+      color: var(--gold);
+      padding: 15px 36px;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+    .btn-dark:hover { background: var(--black-mid); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black-mid);
+      padding: 60px 48px 32px;
+      border-top: 1px solid var(--white-10);
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--white-10);
+      margin-bottom: 32px;
+    }
+    .footer-brand p {
+      font-size: 0.82rem;
+      color: var(--white-30);
+      line-height: 1.7;
+      margin-top: 16px;
+    }
+    .footer-col h4 {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--white-30);
+      text-decoration: none;
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p {
+      font-size: 0.72rem;
+      color: var(--white-30);
+      line-height: 1.6;
+      max-width: 680px;
+    }
+    .footer-legal {
+      font-size: 0.72rem;
+      color: var(--white-30);
+    }
+    .footer-legal a { color: var(--white-30); }
+    .footer-par4 {
+      font-size: 0.68rem;
+      color: var(--white-30);
+      text-align: right;
+    }
+    .footer-par4 a { color: var(--gold); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { top: 72px; }
+
+      .hero-inner { padding: 80px 24px; }
+      .hero h1 { font-size: 5rem; }
+
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item { border-bottom: 1px solid var(--white-10); }
+      .stat-item:nth-child(3), .stat-item:nth-child(4) { border-bottom: none; }
+
+      .section-inner { padding: 64px 24px; }
+      .bio-grid { grid-template-columns: 1fr; gap: 48px; }
+      .video-grid { grid-template-columns: 1fr 1fr; }
+      .blog-grid { grid-template-columns: 1fr 1fr; }
+      .notable-list { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .cta-section { padding: 64px 24px; }
+      .stats-strip { padding: 0 24px; }
+    }
+
+    @media (max-width: 560px) {
+      .hero h1 { font-size: 3.8rem; }
+      .hero-nickname { font-size: 1.5rem; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .video-grid { grid-template-columns: 1fr; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .trophy-totals { gap: 12px; }
+      .trophy-total { min-width: 120px; }
+      .notable-list { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .hero-actions { flex-direction: column; }
+      .bio-facts { grid-template-columns: 1fr; }
+      .win-row { flex-wrap: wrap; }
+      .win-amount { flex-basis: 100%; padding-left: 44px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- OUTREACH BANNER -->
+  <div class="outreach-banner">
+    <strong>Hey Daniel —</strong> I'm a huge fan. I built this for you, no strings attached.
+    <a href="mailto:scott.schultz.solutions@gmail.com" class="reply-btn">Let's Talk →</a>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <span class="nav-logo-main">DANIEL <strong>NEGREANU</strong></span>
+      <span class="nav-logo-sub">Official Website</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#biography">Biography</a></li>
+      <li><a href="#trophy">Trophy Room</a></li>
+      <li><a href="#videos">Video Blog</a></li>
+      <li><a href="#blog">Poker Blog</a></li>
+      <li><a href="https://ggpoker.com" target="_blank">GG Poker</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#biography">Biography</a>
+    <a href="#trophy">Trophy Room</a>
+    <a href="#videos">Video Blog</a>
+    <a href="#blog">Poker Blog</a>
+    <a href="https://ggpoker.com" target="_blank">GG Poker</a>
+    <a href="#contact" class="mobile-cta">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow">7x WSOP Bracelet Winner &nbsp;·&nbsp; Poker Hall of Fame</div>
+      <h1>DANIEL<br><span class="gold">NEGREANU</span></h1>
+      <div class="hero-nickname">"Kid Poker"</div>
+      <p class="hero-desc">The most recognizable name in poker. Six-time WSOP bracelet winner, two-time World Poker Tour champion, and the all-time leader in live tournament earnings at over $57 million.</p>
+      <div class="hero-actions">
+        <a href="#trophy" class="btn-primary">View Trophy Room</a>
+        <a href="https://www.youtube.com/user/DNegreanu/videos" target="_blank" class="btn-secondary">Watch Video Blog</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-num">7</div>
+        <div class="stat-label">WSOP Bracelets</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">$57M+</div>
+        <div class="stat-label">Live Tournament Earnings</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2×</div>
+        <div class="stat-label">GPI Player of the Year</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2017</div>
+        <div class="stat-label">Poker Hall of Fame</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BIOGRAPHY -->
+  <section id="biography">
+    <div class="section-inner">
+      <div class="bio-grid">
+        <div class="bio-text">
+          <div class="section-label">Biography</div>
+          <h2 class="section-title">THE GREATEST<br>OF ALL TIME.</h2>
+          <p>Born in Deva, Romania and raised in Toronto, Canada, Daniel Negreanu moved to Las Vegas at age 22 with one goal: to become the best poker player in the world. He's spent the last three decades making the case.</p>
+          <p>Nicknamed <strong>"Kid Poker"</strong> for his youthful looks and brash confidence at the table, Daniel built his reputation on an uncanny ability to read opponents and an encyclopedic knowledge of poker strategy across every variant of the game.</p>
+          <p>His résumé is unmatched — <strong>7 WSOP bracelets</strong>, 2 World Poker Tour titles, back-to-back GPI Player of the Year awards (2004 &amp; 2013), and more than <strong>$57 million</strong> in live tournament earnings, the most of any player in history. In 2017, the industry recognized him with induction into the <strong>Poker Hall of Fame</strong>.</p>
+          <p>Today Daniel is a GGPoker brand ambassador, a MasterClass instructor, and one of the most-followed poker personalities in the world with millions of fans across social media.</p>
+          <div class="bio-facts">
+            <div class="bio-fact">
+              <div class="bio-fact-label">Born</div>
+              <div class="bio-fact-value">June 26, 1974 · Deva, Romania</div>
+            </div>
+            <div class="bio-fact">
+              <div class="bio-fact-label">Hometown</div>
+              <div class="bio-fact-value">Las Vegas, NV</div>
+            </div>
+            <div class="bio-fact">
+              <div class="bio-fact-label">Nickname</div>
+              <div class="bio-fact-value">Kid Poker</div>
+            </div>
+            <div class="bio-fact">
+              <div class="bio-fact-label">Hall of Fame</div>
+              <div class="bio-fact-value">Inducted 2017</div>
+            </div>
+          </div>
+        </div>
+        <div class="bio-sidebar">
+          <div class="gg-card">
+            <div class="gg-card-header">🂡 &nbsp;GGPoker Brand Ambassador</div>
+            <div class="gg-card-body">
+              <p>Daniel is the global face of GGPoker — the world's second-largest online poker platform. He brings his decades of expertise to players at every level.</p>
+              <a href="https://ggpoker.com" target="_blank">Play on GGPoker →</a>
+            </div>
+          </div>
+          <div class="gg-card">
+            <div class="gg-card-header">🎓 &nbsp;MasterClass</div>
+            <div class="gg-card-body">
+              <p>Learn poker strategy directly from Daniel in his acclaimed MasterClass — covering everything from reading opponents to advanced tournament play.</p>
+              <a href="https://www.masterclass.com/classes/daniel-negreanu-teaches-poker" target="_blank">Watch on MasterClass →</a>
+            </div>
+          </div>
+          <div class="accolade-list">
+            <div class="accolade-item">2× GPI Player of the Year (2004 &amp; 2013)</div>
+            <div class="accolade-item">Poker Hall of Fame Inductee, 2017</div>
+            <div class="accolade-item">7 World Series of Poker Bracelets</div>
+            <div class="accolade-item">2 World Poker Tour Championships</div>
+            <div class="accolade-item">$57.6M+ in live tournament earnings</div>
+            <div class="accolade-item">Featured on ESPN, Netflix &amp; NBC Sports</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TROPHY ROOM -->
+  <section id="trophy">
+    <div class="section-inner">
+      <div class="section-label">Career Wins</div>
+      <h2 class="section-title">TROPHY ROOM</h2>
+      <p class="trophy-intro">Daniel has become a household name among millions of poker enthusiasts worldwide. His career spans nearly three decades of elite-level competition across every major tour and format. Go back in time and check out this library of wins below.</p>
+
+      <div class="trophy-totals">
+        <div class="trophy-total">
+          <div class="trophy-total-num">7</div>
+          <div class="trophy-total-label">WSOP Bracelets</div>
+        </div>
+        <div class="trophy-total">
+          <div class="trophy-total-num">2</div>
+          <div class="trophy-total-label">WPT Titles</div>
+        </div>
+        <div class="trophy-total">
+          <div class="trophy-total-num">$57.6M</div>
+          <div class="trophy-total-label">Career Earnings</div>
+        </div>
+        <div class="trophy-total">
+          <div class="trophy-total-num">28+</div>
+          <div class="trophy-total-label">Years on Tour</div>
+        </div>
+      </div>
+
+      <!-- 2025 -->
+      <div class="year-block open">
+        <div class="year-header">
+          <span class="year-label">2025</span>
+          <span class="year-meta">3 cashes</span>
+          <span class="year-chevron">▼</span>
+        </div>
+        <div class="year-wins">
+          <div class="win-row"><span class="win-place second">2nd</span><span class="win-event">2025 World Series of Poker $10,000 Omaha Hi-Lo 8 or Better Championship</span><span class="win-amount">$313,615</span></div>
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">2025 PGT PLO Series $5,100 Pot-Limit Omaha</span><span class="win-amount">$182,850</span></div>
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">2025 PGT Mixed Games $15,200 Dealer's Choice</span><span class="win-amount">$292,500</span></div>
+        </div>
+      </div>
+
+      <!-- 2024 -->
+      <div class="year-block">
+        <div class="year-header">
+          <span class="year-label">2024</span>
+          <span class="year-meta">4 cashes · WSOP 🏆</span>
+          <span class="year-chevron">▼</span>
+        </div>
+        <div class="year-wins">
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">2024 World Series of Poker $50,000 Poker Players Championship</span><span class="win-amount">$1,178,703</span></div>
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">2024 PGT PLO Series $15,500 Pot-Limit Omaha Progressive Bounty</span><span class="win-amount">$147,500</span></div>
+          <div class="win-row"><span class="win-place second">2nd</span><span class="win-event">2024 PGT Mixed Games $10,600 Dealer's Choice</span><span class="win-amount">$103,400</span></div>
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">PGT Last Chance #1 — $10,500 No-Limit Hold'em</span><span class="win-amount">$218,400</span></div>
+        </div>
+      </div>
+
+      <!-- 2022 -->
+      <div class="year-block">
+        <div class="year-header">
+          <span class="year-label">2022</span>
+          <span class="year-meta">1 cash</span>
+          <span class="year-chevron">▼</span>
+        </div>
+        <div class="year-wins">
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">Super High Roller Bowl VII $300,000 Buy-In</span><span class="win-amount">$3,312,000</span></div>
+        </div>
+      </div>
+
+      <!-- 2021 -->
+      <div class="year-block">
+        <div class="year-header">
+          <span class="year-label">2021</span>
+          <span class="year-meta">4 cashes</span>
+          <span class="year-chevron">▼</span>
+        </div>
+        <div class="year-wins">
+          <div class="win-row"><span class="win-place third">3rd</span><span class="win-event">2021 World Series of Poker $50,000 High Roller No-Limit Hold'em</span><span class="win-amount">$661,041</span></div>
+          <div class="win-row"><span class="win-place third">3rd</span><span class="win-event">2021 World Series of Poker $50,000 High Roller Pot-Limit Omaha</span><span class="win-amount">$519,764</span></div>
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">2021 PokerGO Cup Overall Champion — $50,000 No-Limit Hold'em</span><span class="win-amount">$700,000</span></div>
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">4th</span><span class="win-event">2021 PokerGO Cup $100,000 No-Limit Hold'em</span><span class="win-amount">$230,000</span></div>
+        </div>
+      </div>
+
+      <!-- 2019 -->
+      <div class="year-block">
+        <div class="year-header">
+          <span class="year-label">2019</span>
+          <span class="year-meta">2 cashes</span>
+          <span class="year-chevron">▼</span>
+        </div>
+        <div class="year-wins">
+          <div class="win-row"><span class="win-place second">2nd</span><span class="win-event">2019 World Series of Poker $100,000 No-Limit Hold'em</span><span class="win-amount">$1,725,838</span></div>
+          <div class="win-row"><span class="win-place second">2nd</span><span class="win-event">2019 World Series of Poker $10,000 Seven Card Stud</span><span class="win-amount">$151,700</span></div>
+        </div>
+      </div>
+
+      <!-- 2018 -->
+      <div class="year-block">
+        <div class="year-header">
+          <span class="year-label">2018</span>
+          <span class="year-meta">1 cash</span>
+          <span class="year-chevron">▼</span>
+        </div>
+        <div class="year-wins">
+          <div class="win-row"><span class="win-place second">2nd</span><span class="win-event">PokerGO Super High Roller Bowl $300,000 Super High Roller Bowl</span><span class="win-amount">$3,000,000</span></div>
+        </div>
+      </div>
+
+      <!-- 2017 -->
+      <div class="year-block">
+        <div class="year-header">
+          <span class="year-label">2017</span>
+          <span class="year-meta">7 cashes · Hall of Fame Induction</span>
+          <span class="year-chevron">▼</span>
+        </div>
+        <div class="year-wins">
+          <div class="win-row"><span class="win-place second">2nd</span><span class="win-event">WPT Bellagio Five Diamond World Poker Classic $100,000 Super High Roller</span><span class="win-amount">$936,000</span></div>
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">8th</span><span class="win-event">2017 Poker Masters $50,000 No-Limit Hold'em</span><span class="win-amount">$102,000</span></div>
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">9th</span><span class="win-event">2017 PokerStars Championship Barcelona €50,000 NLHE Eight Max</span><span class="win-amount">$139,203</span></div>
+          <div class="win-row"><span class="win-place second">2nd</span><span class="win-event">2017 World Series of Poker $10,000 Omaha Hi-Lo 8/OB</span><span class="win-amount">$241,851</span></div>
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">5th</span><span class="win-event">2017 WSOP $50,000 Poker Players Championship Six Max</span><span class="win-amount">$300,852</span></div>
+          <div class="win-row"><span class="win-place second">2nd</span><span class="win-event">Bellagio High Roller Mix $25,000 Ten Game Mix (Games 1 &amp; 2)</span><span class="win-amount">$252,500</span></div>
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">5th</span><span class="win-event">2017 PokerStars Championship Bahamas $25,000 No-Limit Hold'em</span><span class="win-amount">$268,780</span></div>
+        </div>
+      </div>
+
+      <!-- 2015 -->
+      <div class="year-block">
+        <div class="year-header">
+          <span class="year-label">2015</span>
+          <span class="year-meta">3 cashes</span>
+          <span class="year-chevron">▼</span>
+        </div>
+        <div class="year-wins">
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">11th</span><span class="win-event">2015 World Series of Poker $10K NL Main Event</span><span class="win-amount">$526,778</span></div>
+          <div class="win-row"><span class="win-place third">3rd</span><span class="win-event">2015 World Series of Poker $10K Stud Hi-Low</span><span class="win-amount">$113,062</span></div>
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">2015 PokerStars Shark Cage Season 2</span><span class="win-amount">$966,000</span></div>
+          <div class="win-row"><span class="win-place third">3rd</span><span class="win-event">2015 WPT Alpha8 $100K NL</span><span class="win-amount">$640,000</span></div>
+        </div>
+      </div>
+
+      <!-- 2014 -->
+      <div class="year-block">
+        <div class="year-header">
+          <span class="year-label">2014</span>
+          <span class="year-meta">3 cashes</span>
+          <span class="year-chevron">▼</span>
+        </div>
+        <div class="year-wins">
+          <div class="win-row"><span class="win-place second">2nd</span><span class="win-event">2014 World Series of Poker $1,000,000 Big One for One Drop</span><span class="win-amount">$8,288,001</span></div>
+          <div class="win-row"><span class="win-place second">2nd</span><span class="win-event">2014 WSOP $10K No-Limit 2-7 Draw Lowball</span><span class="win-amount">$156,674</span></div>
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">5th</span><span class="win-event">2014 Aussie Millions $100,000 Challenge</span><span class="win-amount">$550,000</span></div>
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">4th</span><span class="win-event">2014 Aussie Millions $250,000 Challenge</span><span class="win-amount">$1,250,000</span></div>
+        </div>
+      </div>
+
+      <!-- 2013 -->
+      <div class="year-block">
+        <div class="year-header">
+          <span class="year-label">2013</span>
+          <span class="year-meta">7 cashes · Player of the Year 🏆</span>
+          <span class="year-chevron">▼</span>
+        </div>
+        <div class="year-wins">
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">2013 World Series of Poker Europe High Roller Event</span><span class="win-amount">€725,000</span></div>
+          <div class="win-row"><span class="win-place second">2nd</span><span class="win-event">2013 PokerStars EPT Barcelona High Roller</span><span class="win-amount">€263,800</span></div>
+          <div class="win-row"><span class="win-place second">2nd</span><span class="win-event">2013 World Series of Poker $2,500 Limit 2-7 Triple Draw Lowball</span><span class="win-amount">$107,055</span></div>
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">2013 PokerStars SCOOP $5,200 PLO 6-Max</span><span class="win-amount">$216,000</span></div>
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">7th</span><span class="win-event">2013 WPT $25K Championship Bellagio Main Event</span><span class="win-amount">$137,085</span></div>
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">4th</span><span class="win-event">2013 PokerStars EPT Grand Final Monaco Main Event</span><span class="win-amount">€321,000</span></div>
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">2013 World Series of Poker Asia-Pacific Main Event</span><span class="win-amount">$1,087,160</span></div>
+        </div>
+      </div>
+
+      <!-- 2012 -->
+      <div class="year-block">
+        <div class="year-header">
+          <span class="year-label">2012</span>
+          <span class="year-meta">3 cashes</span>
+          <span class="year-chevron">▼</span>
+        </div>
+        <div class="year-wins">
+          <div class="win-row"><span class="win-place second">2nd</span><span class="win-event">2012 PokerStars Monte-Carlo EPT Grand Final High Roller</span><span class="win-amount">€598,600</span></div>
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">6th</span><span class="win-event">2012 PokerStars Monte-Carlo EPT Grand Final Super High Roller</span><span class="win-amount">€310,000</span></div>
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">5th</span><span class="win-event">2012 PokerStars EPT Caribbean Adventure Super High Roller</span><span class="win-amount">$250,900</span></div>
+        </div>
+      </div>
+
+      <!-- 2011 -->
+      <div class="year-block">
+        <div class="year-header">
+          <span class="year-label">2011</span>
+          <span class="year-meta">2 cashes</span>
+          <span class="year-chevron">▼</span>
+        </div>
+        <div class="year-wins">
+          <div class="win-row"><span class="win-place third">3rd</span><span class="win-event">2011 WPT Championship Super High Roller</span><span class="win-amount">$448,320</span></div>
+          <div class="win-row"><span class="win-place second">2nd</span><span class="win-event">2011 PokerStars EPT Caribbean Adventure Super High Roller</span><span class="win-amount">$1,000,000</span></div>
+        </div>
+      </div>
+
+      <!-- 2010 -->
+      <div class="year-block">
+        <div class="year-header">
+          <span class="year-label">2010</span>
+          <span class="year-meta">5 cashes</span>
+          <span class="year-chevron">▼</span>
+        </div>
+        <div class="year-wins">
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">8th</span><span class="win-event">2010 WSOP $10,000 2-7 No-Limit Lowball Championship</span><span class="win-amount">$26,004</span></div>
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">6th</span><span class="win-event">2010 WSOP Tournament of Champions</span><span class="win-amount">$25,000</span></div>
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">5th</span><span class="win-event">2010 WSOP Europe — No-Limit Hold'em High Roller Heads-Up</span><span class="win-amount">$72,576</span></div>
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">4th</span><span class="win-event">2010 PokerStars EPT Vienna Main Event</span><span class="win-amount">$244,178</span></div>
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">9th</span><span class="win-event">2010 PokerStars APPT Sydney Main Event</span><span class="win-amount">$36,002</span></div>
+        </div>
+      </div>
+
+      <!-- 2009 -->
+      <div class="year-block">
+        <div class="year-header">
+          <span class="year-label">2009</span>
+          <span class="year-meta">4 cashes</span>
+          <span class="year-chevron">▼</span>
+        </div>
+        <div class="year-wins">
+          <div class="win-row"><span class="win-place second">2nd</span><span class="win-event">2009 WSOP Europe Main Event</span><span class="win-amount">$783,061</span></div>
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">4th</span><span class="win-event">2009 WSOP $10,000 Omaha 8 or Better Championship</span><span class="win-amount">$130,401</span></div>
+          <div class="win-row"><span class="win-place second">2nd</span><span class="win-event">2009 WSOP $2,500 Limit Hold'em Six Handed</span><span class="win-amount">$138,280</span></div>
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">10th</span><span class="win-event">2009 WSOP $10,000 Seven Card Stud Championship</span><span class="win-amount">$36,267</span></div>
+        </div>
+      </div>
+
+      <!-- 2008 -->
+      <div class="year-block">
+        <div class="year-header">
+          <span class="year-label">2008</span>
+          <span class="year-meta">5 cashes · WSOP Bracelet 🏆</span>
+          <span class="year-chevron">▼</span>
+        </div>
+        <div class="year-wins">
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">5th</span><span class="win-event">2008 WSOP Europe Main Event</span><span class="win-amount">$386,144</span></div>
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">2008 B.C. Poker Championships Main Event</span><span class="win-amount">$371,910</span></div>
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">2008 WSOP Event 20 — Limit Hold'em</span><span class="win-amount">$204,863</span></div>
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">7th</span><span class="win-event">2008 WSOP Pot-Limit Omaha with Rebuys</span><span class="win-amount">$123,437</span></div>
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">13th</span><span class="win-event">2008 WSOP World Championship H.O.R.S.E.</span><span class="win-amount">$142,080</span></div>
+        </div>
+      </div>
+
+      <!-- 2007 -->
+      <div class="year-block">
+        <div class="year-header">
+          <span class="year-label">2007</span>
+          <span class="year-meta">4 cashes</span>
+          <span class="year-chevron">▼</span>
+        </div>
+        <div class="year-wins">
+          <div class="win-row"><span class="win-place third">3rd</span><span class="win-event">2007 WSOP No-Limit Hold'em Shootout</span><span class="win-amount">$101,351</span></div>
+          <div class="win-row"><span class="win-place second">2nd</span><span class="win-event">2007 World Poker Open (WPT) No-Limit Hold'em Championship</span><span class="win-amount">$502,691</span></div>
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">14th</span><span class="win-event">2007 WPT Five Diamond World Poker Classic</span><span class="win-amount">$96,355</span></div>
+        </div>
+      </div>
+
+      <!-- 2006 -->
+      <div class="year-block">
+        <div class="year-header">
+          <span class="year-label">2006</span>
+          <span class="year-meta">6 cashes · WPT 🏆</span>
+          <span class="year-chevron">▼</span>
+        </div>
+        <div class="year-wins">
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">Jack Binion WSOP Circuit Grand Tunica No-Limit Hold'em Championship</span><span class="win-amount">$755,525</span></div>
+          <div class="win-row"><span class="win-place second">2nd</span><span class="win-event">2006 Tournament of Champions No-Limit Hold'em</span><span class="win-amount">$325,000</span></div>
+          <div class="win-row"><span class="win-place third">3rd</span><span class="win-event">2006 WPT Five Diamond World Poker Classic No-Limit Hold'em</span><span class="win-amount">$592,000</span></div>
+          <div class="win-row"><span class="win-place" style="color:var(--white-30)">5th</span><span class="win-event">2006 National Heads-Up Poker Championship</span><span class="win-amount">$75,000</span></div>
+        </div>
+      </div>
+
+      <!-- 2004 -->
+      <div class="year-block">
+        <div class="year-header">
+          <span class="year-label">2004</span>
+          <span class="year-meta">9 cashes · Player of the Year · 2× WPT 🏆</span>
+          <span class="year-chevron">▼</span>
+        </div>
+        <div class="year-wins">
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">WPT Bellagio Five-Diamond World Poker Classic II — No-Limit Hold'em</span><span class="win-amount">$1,770,218</span></div>
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">World Poker Tour Borgata — No-Limit Hold'em</span><span class="win-amount">$1,117,400</span></div>
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">Championship at the Plaza — No-Limit Hold'em</span><span class="win-amount">$310,000</span></div>
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">2004 World Series of Poker — Limit Hold'em</span><span class="win-amount">$169,100</span></div>
+          <div class="win-row"><span class="win-place second">2nd</span><span class="win-event">PartyPoker Million III — Limit Hold'em Championship</span><span class="win-amount">$675,178</span></div>
+          <div class="win-row"><span class="win-place third">3rd</span><span class="win-event">Caribbean Adventure — No-Limit Hold'em</span><span class="win-amount">$192,270</span></div>
+        </div>
+      </div>
+
+      <!-- Earlier years condensed -->
+      <div class="year-block">
+        <div class="year-header">
+          <span class="year-label">1997 – 2003</span>
+          <span class="year-meta">Early Career</span>
+          <span class="year-chevron">▼</span>
+        </div>
+        <div class="year-wins">
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">1999 United States Poker Championship — $7,500 No-Limit Hold'em</span><span class="win-amount">Notable Win</span></div>
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">1998 World Series of Poker — $2,000 Pot-Limit Hold'em</span><span class="win-amount">WSOP Bracelet</span></div>
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">2002 Best All-Around Player — L.A. Poker Classic (8 cashes)</span><span class="win-amount">Award</span></div>
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">2003 $2,000 S.H.O.E. — World Series of Poker</span><span class="win-amount">WSOP Cash</span></div>
+          <div class="win-row"><span class="win-place first">1st</span><span class="win-event">1997 Best All-Around Player — Foxwoods (back-to-back limit hold'em wins)</span><span class="win-amount">Award</span></div>
+        </div>
+      </div>
+
+      <!-- Notable Accomplishments -->
+      <div class="notable-section">
+        <div class="notable-title">Notable Accomplishments</div>
+        <div class="notable-list">
+          <div class="notable-item">Best all-around player at Foxwoods in 1997 with back-to-back wins in limit hold'em</div>
+          <div class="notable-item">Best all-around player at the L.A. Poker Classic in 2002, cashing eight times</div>
+          <div class="notable-item">12 major wins from 1997–1999 — most by any player on the tournament circuit</div>
+          <div class="notable-item">GPI Player of the Year 2004 &amp; 2013 — only player to win twice</div>
+          <div class="notable-item">Poker Hall of Fame inducted 2017</div>
+          <div class="notable-item">All-time leading live tournament earner with over $57,600,000</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- VIDEO BLOG -->
+  <section id="videos">
+    <div class="section-inner">
+      <div class="section-label">Video Blog</div>
+      <h2 class="section-title">WATCH DANIEL<br>IN ACTION.</h2>
+      <p class="section-sub">From hand analysis to tournament vlogs to life away from the felt — Daniel's YouTube channel is the closest thing to riding shotgun with one of poker's all-time greats.</p>
+      <div class="video-grid">
+        <a href="https://www.youtube.com/user/DNegreanu/videos" target="_blank" class="video-card">
+          <div class="video-thumb" style="background: linear-gradient(135deg, #1a1a1a, #2a1a0a);">
+            <div class="play-btn">▶</div>
+          </div>
+          <div class="video-info">
+            <div class="video-title">Tournament Vlogs &amp; Hand Reviews</div>
+            <div class="video-meta">YouTube · RealKidPoker</div>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/user/DNegreanu/videos" target="_blank" class="video-card">
+          <div class="video-thumb" style="background: linear-gradient(135deg, #0a1a1a, #0a2a1a);">
+            <div class="play-btn">▶</div>
+          </div>
+          <div class="video-info">
+            <div class="video-title">WSOP 2024 — Players Championship Win</div>
+            <div class="video-meta">YouTube · RealKidPoker</div>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/user/DNegreanu/videos" target="_blank" class="video-card">
+          <div class="video-thumb" style="background: linear-gradient(135deg, #1a0a0a, #2a0a0a);">
+            <div class="play-btn">▶</div>
+          </div>
+          <div class="video-info">
+            <div class="video-title">Poker Strategy &amp; Life Off the Felt</div>
+            <div class="video-meta">YouTube · RealKidPoker</div>
+          </div>
+        </a>
+      </div>
+      <div class="video-cta">
+        <a href="https://www.youtube.com/user/DNegreanu/videos" target="_blank" class="btn-primary">View All Videos on YouTube →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- POKER BLOG -->
+  <section id="blog">
+    <div class="section-inner">
+      <div class="section-label">Poker Blog</div>
+      <h2 class="section-title">STRAIGHT FROM<br>THE RAIL.</h2>
+      <div class="blog-grid">
+        <a href="https://danielnegreanu.com/blog/" target="_blank" class="blog-card">
+          <div class="blog-date">November 2019</div>
+          <div class="blog-title">The WSOP POY Oopsie!</div>
+          <div class="blog-excerpt">Daniel breaks down the Player of the Year controversy and what really happened at the final stretch of the season.</div>
+          <span class="blog-read">Read Post →</span>
+        </a>
+        <a href="https://danielnegreanu.com/blog/" target="_blank" class="blog-card">
+          <div class="blog-date">July 2019</div>
+          <div class="blog-title">Should We Care if People in the US Use a VPN?</div>
+          <div class="blog-excerpt">A deep dive into online poker access, fairness, and what the rules should actually be for American players.</div>
+          <span class="blog-read">Read Post →</span>
+        </a>
+        <a href="https://danielnegreanu.com/blog/" target="_blank" class="blog-card">
+          <div class="blog-date">February 2019</div>
+          <div class="blog-title">My Perfect Poker Tournament</div>
+          <div class="blog-excerpt">If Daniel could design his ideal poker tournament from scratch — structure, buy-in, field size, and format — here's what it looks like.</div>
+          <span class="blog-read">Read Post →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contact">
+    <h2>PLAY LIKE A PRO.</h2>
+    <p>Join Daniel on GGPoker — the home of world-class poker.</p>
+    <a href="https://ggpoker.com" target="_blank" class="btn-dark">Play on GGPoker →</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span style="font-size:1.1rem; letter-spacing:0.12em; font-weight:300;">DANIEL <strong>NEGREANU</strong></span>
+        <p>Official website of professional poker player Daniel Negreanu. Information on this site is intended for poker news and entertainment purposes only. Daniel encourages responsible play.</p>
+        <p style="margin-top:12px; font-size:0.7rem; color:rgba(255,255,255,0.2);">If you or someone you know has a gambling problem, please call 1-800-522-4700 (US Toll Free) for assistance.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="#biography">Biography</a>
+        <a href="#trophy">Trophy Room</a>
+        <a href="#videos">Video Blog</a>
+        <a href="#blog">Poker Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Play</h4>
+        <a href="https://ggpoker.com" target="_blank">GGPoker</a>
+        <a href="https://www.masterclass.com/classes/daniel-negreanu-teaches-poker" target="_blank">MasterClass</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow</h4>
+        <a href="https://twitter.com/RealKidPoker" target="_blank">Twitter / X</a>
+        <a href="https://www.instagram.com/danielnegreanu/" target="_blank">Instagram</a>
+        <a href="https://www.youtube.com/user/DNegreanu" target="_blank">YouTube</a>
+        <a href="https://www.facebook.com/DanielNegreanuPoker" target="_blank">Facebook</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Daniel Negreanu. All rights reserved. Poker Royalty, Inc.</p>
+      <div class="footer-par4">Concept by <a href="https://parfour.io" target="_blank">Par4 Technologies</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    function closeMobile() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }
+
+    window.addEventListener('scroll', () => {
+      if (mobileMenu.classList.contains('open')) closeMobile();
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        const id = href.slice(1);
+        closeMobile();
+        e.preventDefault();
+        if (!id) { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+        const el = document.getElementById(id);
+        if (!el) return;
+        const navEl = document.querySelector('nav');
+        const navH = navEl ? navEl.getBoundingClientRect().height : 72;
+        const top = el.getBoundingClientRect().top + window.scrollY - navH;
+        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+      });
+    });
+
+    // Trophy accordion
+    document.querySelectorAll('.year-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const block = header.parentElement;
+        block.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
