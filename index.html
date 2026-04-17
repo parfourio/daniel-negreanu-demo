@@ -497,6 +497,11 @@
     }
 
     /* Accordion */
+    .trophy-years {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 48px;
+    }
     .year-block {
       border-bottom: 1px solid var(--white-10);
     }
@@ -504,34 +509,37 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 22px 0;
+      padding: 13px 0;
       cursor: pointer;
       user-select: none;
     }
     .year-header:hover .year-label { color: var(--gold); }
     .year-label {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.8rem;
+      font-size: 1.35rem;
       letter-spacing: 0.08em;
       color: var(--white);
       transition: color 0.2s;
+      min-width: 70px;
     }
     .year-meta {
-      font-size: 0.68rem;
+      font-size: 0.6rem;
       font-weight: 600;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--white-30);
+      flex: 1;
+      padding: 0 12px;
     }
     .year-chevron {
       color: var(--gold);
-      font-size: 1rem;
+      font-size: 0.85rem;
       transition: transform 0.25s;
     }
     .year-block.open .year-chevron { transform: rotate(180deg); }
     .year-wins {
       display: none;
-      padding-bottom: 24px;
+      padding-bottom: 16px;
     }
     .year-block.open .year-wins { display: block; }
     .win-row {
@@ -816,6 +824,7 @@
         background-position: 62% top;
         background-color: var(--black);
       }
+      .trophy-years { grid-template-columns: 1fr; }
       .hero-overlay {
         background:
           linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.85) 100%),
@@ -1016,6 +1025,7 @@
         </div>
       </div>
 
+      <div class="trophy-years">
       <!-- 2025 -->
       <div class="year-block open">
         <div class="year-header">
@@ -1299,6 +1309,8 @@
         </div>
       </div>
 
+      </div><!-- /trophy-years -->
+
       <!-- Notable Accomplishments -->
       <div class="notable-section">
         <div class="notable-title">Notable Accomplishments</div>
@@ -1322,17 +1334,9 @@
       <h2 class="section-title">WATCH DANIEL<br>IN ACTION.</h2>
       <p class="section-sub">From hand analysis to tournament vlogs to life away from the felt — Daniel's YouTube channel is the closest thing to riding shotgun with one of poker's all-time greats.</p>
       <div class="video-grid">
-        <a href="https://www.youtube.com/user/DNegreanu/videos" target="_blank" class="video-card">
-          <div class="video-thumb" style="background: linear-gradient(135deg, #1a1a1a, #2a1a0a);">
-            <div class="play-btn">▶</div>
-          </div>
-          <div class="video-info">
-            <div class="video-title">Tournament Vlogs &amp; Hand Reviews</div>
-            <div class="video-meta">YouTube · RealKidPoker</div>
-          </div>
-        </a>
-        <a href="https://www.youtube.com/user/DNegreanu/videos" target="_blank" class="video-card">
-          <div class="video-thumb" style="background: linear-gradient(135deg, #0a1a1a, #0a2a1a);">
+        <a href="https://www.youtube.com/watch?v=Ld9XaGGkVnE" target="_blank" class="video-card">
+          <div class="video-thumb">
+            <img class="video-thumb-img" src="https://img.youtube.com/vi/Ld9XaGGkVnE/hqdefault.jpg" alt="Daniel Negreanu WSOP Vlog" onerror="this.parentElement.style.background='linear-gradient(135deg,#1a1a1a,#2a1a0a)';this.style.display='none'" />
             <div class="play-btn">▶</div>
           </div>
           <div class="video-info">
@@ -1340,8 +1344,19 @@
             <div class="video-meta">YouTube · RealKidPoker</div>
           </div>
         </a>
-        <a href="https://www.youtube.com/user/DNegreanu/videos" target="_blank" class="video-card">
-          <div class="video-thumb" style="background: linear-gradient(135deg, #1a0a0a, #2a0a0a);">
+        <a href="https://www.youtube.com/watch?v=QIPIVNvArO0" target="_blank" class="video-card">
+          <div class="video-thumb">
+            <img class="video-thumb-img" src="https://img.youtube.com/vi/QIPIVNvArO0/hqdefault.jpg" alt="Daniel Negreanu Poker Vlog" onerror="this.parentElement.style.background='linear-gradient(135deg,#0a1a1a,#0a2a1a)';this.style.display='none'" />
+            <div class="play-btn">▶</div>
+          </div>
+          <div class="video-info">
+            <div class="video-title">Tournament Vlogs &amp; Hand Reviews</div>
+            <div class="video-meta">YouTube · RealKidPoker</div>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=yLLFVMSZeL4" target="_blank" class="video-card">
+          <div class="video-thumb">
+            <img class="video-thumb-img" src="https://img.youtube.com/vi/yLLFVMSZeL4/hqdefault.jpg" alt="Daniel Negreanu Poker Strategy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1a0a0a,#2a0a0a)';this.style.display='none'" />
             <div class="play-btn">▶</div>
           </div>
           <div class="video-info">
